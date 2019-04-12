@@ -26,62 +26,62 @@ char  \'[^\'\n']\'
 
 %%
 {int}        {
-	if(select) printf("(%s, CONSTANTINT)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	yylval.type_int=atoi(yytext); 
 	return INT;
 	}
 {float}      {
-	if(select) printf("(%s, CONSTANTFLOAT)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	yylval.type_float=atof(yytext); 
 	return FLOAT;
 	}
 {char}       {
-	if(select) printf("(%s, CONSTANTCHAR)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	yylval.type_char=yytext[1];
 	return CHAR;
 	}
 "int"        {
-	if(select) printf("(%s, TYPEINT)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	strcpy(yylval.type_id,  yytext);
 	return TYPE;
 	}
 "float"      {
-	if(select) printf("(%s, TYPEFLOAT)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	strcpy(yylval.type_id,  yytext);
 	return TYPE;
 	}
 "char"       {
-	if(select) printf("(%s, TYPECHAR)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	strcpy(yylval.type_id,  yytext);
 	return TYPE;
 	}
 "return"     {
-	if(select) printf("(%s, RETURN)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	return RETURN;
 	}
 "if"         {
-	if(select) printf("(%s, IF)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	return IF;
 	}
 "else"       {
-	if(select) printf("(%s, ELSE)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	return ELSE;
 	}
 "while"      {
-	if(select) printf("(%s, WHILE)\n", yytext);
+	if(select) printf("(%s, KEY)\n", yytext);
 	return WHILE;
 	}
 {id}         {
-	if(select) printf("(%s, IDENTIFIER)\n", yytext);
+	if(select) printf("(%s, ID)\n", yytext);
 	strcpy(yylval.type_id,  yytext); 
 	return ID;
 	}
 ";"			{
-	if(select) printf("(%s,SEMI)\n",yytext);
+	if(select) printf("(%s,SYM)\n",yytext);
 	return SEMI;
 	}
 ","			{
-	if(select) printf("(%s, COMMA)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return COMMA;
 	}
 ">"|"<"|">="|"<="|"=="|"!=" {
@@ -90,59 +90,59 @@ char  \'[^\'\n']\'
 	return RELOP;
 	}
 "="			{
-	if(select) printf("(%s, ASSIGNOP)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return ASSIGNOP;
 	}
 "+"			{
-	if(select) printf("(%s, PLUS)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return PLUS;
 	}
 "-"			{
-	if(select) printf("(%s, MINUS)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return MINUS;
 	}
 "*"			{
-	if(select) printf("(%s, STAR)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return STAR;
 	}
 "/"			{
-	if(select) printf("(%s, DIV)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return DIV;
 	}
 "&&"        {
-	if(select) printf("(%s, AND)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return AND;
 	}
 "||"        {
-	if(select) printf("(%s, OR)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return OR;
 	}
 "!"			{
-	if(select) printf("(%s, NOT)\n", yytext);
+	if(select) printf("(%s, SYM)\n", yytext);
 	return NOT;
 	}
 "("			{
-	if(select) printf("(%s, LP)\n", yytext); 
+	if(select) printf("(%s, SYM)\n", yytext); 
 	return LP;
 	}
 ")"			{
-	if(select) printf("(%s, RP)\n", yytext); 
+	if(select) printf("(%s, SYM)\n", yytext); 
 	return RP;
 	}
 "{"			{
-	if(select) printf("(%s, LC)\n", yytext); 
+	if(select) printf("(%s, SYM)\n", yytext); 
 	return LC;
 	}
 "}"			{
-	if(select) printf("(%s, RC)\n", yytext); 
+	if(select) printf("(%s, SYM)\n", yytext); 
 	return RC;
 	}
 "++"        {
-	if(select) printf("(%s, ADDA)\n", yytext); 
+	if(select) printf("(%s, SYM)\n", yytext); 
 	return ADDA;
 	}
 "--"        {
-	if(select) printf("(%s, SUBS)\n", yytext); 
+	if(select) printf("(%s, SYM)\n", yytext); 
 	return SUBS;
 	}
 (\/\/.*)|(\/\*((\*[^\/]?)|[^\*]*)*\*\/) {
